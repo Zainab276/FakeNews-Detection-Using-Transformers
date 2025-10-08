@@ -5,7 +5,7 @@ Project Overview
 
 This project is designed to detect fake news using an ensemble of two transformer-based models: DistilBERT and RoBERTa. By combining predictions from both models, the ensemble improves accuracy and reliability in classifying news articles as either real or fake.
 
-Features
+**Features**
 
 Uses DistilBERT and RoBERTa pre-trained transformer models.
 
@@ -17,19 +17,19 @@ Provides accuracy metrics, confusion matrix, and optional visualizations.
 
 Fast training using a reduced dataset subset for experimentation.
 
-Dataset
+**Dataset**
 
 The dataset consists of two CSV files: Fake.csv and True.csv.
 
 Each entry contains a title and text of a news article.
 
-Labels:
+**Labels:**
 
 0 or fake → Fake news
 
 1 or real → Real news
 
-How It Works
+**How It Works**
 
 The dataset is loaded and preprocessed.
 
@@ -39,7 +39,7 @@ During inference, the ensemble averages the predictions from both models.
 
 The final output classifies news articles as real or fake.
 
-Results
+**Results**
 
 The ensemble achieves high accuracy on the evaluation dataset.
 
