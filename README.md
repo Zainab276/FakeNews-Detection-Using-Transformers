@@ -1,127 +1,46 @@
-# 📰 Fake News Detection using DistilBERT, RoBERTa, and Ensemble Learning
+# Fake News Detection using DistilBERT, RoBERTa, and Ensemble Learning
 
-## 📘 Overview
-This project detects **fake news** using advanced **transformer-based NLP models** — specifically **DistilBERT** and **RoBERTa** — fine-tuned for binary text classification.  
-An **ensemble method** combines predictions from both models for improved accuracy and generalization.
+Fake News Detection Using Ensemble Models
+Project Overview
 
----
+This project is designed to detect fake news using an ensemble of two transformer-based models: DistilBERT and RoBERTa. By combining predictions from both models, the ensemble improves accuracy and reliability in classifying news articles as either real or fake.
 
-## 📂 Dataset
-The dataset consists of labeled news articles, preprocessed and tokenized using Hugging Face Transformers.  
-You can replace it with any binary-labeled text dataset (e.g., `FakeNewsNet`, `LIAR`, or Kaggle Fake News Dataset).
+Features
 
----
+Uses DistilBERT and RoBERTa pre-trained transformer models.
 
-## 🧠 Model Architecture
-- **DistilBERT**: A lightweight version of BERT, faster but still high-performing.  
-- **RoBERTa**: A robustly optimized BERT variant for better language understanding.  
-- **Ensemble Model**: Combines both model logits for more stable predictions.
+Fine-tuned on a custom dataset of fake and real news.
 
----
+Implements an ensemble approach by averaging predictions from both models.
 
-## ⚙️ Installation
+Provides accuracy metrics, confusion matrix, and optional visualizations.
 
-### 1. Clone this repository
-```bash
-git clone https://github.com/yourusername/fake-news-detection.git
-cd fake-news-detection
-```
+Fast training using a reduced dataset subset for experimentation.
 
-### 2. Create and activate a virtual environment
-```bash
-python -m venv venv
-venv\Scripts\activate   # (Windows)
-# or
-source venv/bin/activate  # (Linux/Mac)
-```
+Dataset
 
-### 3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
+The dataset consists of two CSV files: Fake.csv and True.csv.
 
----
+Each entry contains a title and text of a news article.
 
-## 🚀 Usage
+Labels:
 
-### 1. Run preprocessing & tokenization
-```python
-from transformers import AutoTokenizer
-from datasets import load_dataset
+0 or fake → Fake news
 
-dataset = load_dataset("your_dataset_name")
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-```
+1 or real → Real news
 
-### 2. Train the models
-```python
-trainer1.train()
-trainer2.train()
-```
+How It Works
 
-### 3. Ensemble predictions
-```python
-texts = ["Breaking: Major policy changes announced...", "Scientists confirm alien life."]
-predictions = ensemble_predict(texts, model1, tokenizer1, model2, tokenizer2)
-print(predictions)
-```
+The dataset is loaded and preprocessed.
 
----
+Both models (DistilBERT and RoBERTa) are fine-tuned on the training data.
 
-## 📁 Project Structure
+During inference, the ensemble averages the predictions from both models.
 
-```
-fake-news-detection/
-│
-├── data/
-│   ├── raw/               # Original dataset files
-│   ├── real/              # Preprocessed real news
-│   └── fake/              # Preprocessed fake news
-│
-├── models/
-│   ├── distilbert/        # Saved DistilBERT fine-tuned weights
-│   └── roberta/           # Saved RoBERTa fine-tuned weights
-│
-├── notebooks/
-│   └── FakeNews_Analysis.ipynb   # Main notebook for training & analysis
-│
-├── requirements.txt
-├── README.md
-└── ensemble_predict.py
-```
+The final output classifies news articles as real or fake.
 
----
+Results
 
-## 📊 Results (Example)
-| Model | Accuracy | F1 Score |
-|--------|-----------|----------|
-| DistilBERT | 0.96 | 0.95 |
-| RoBERTa | 0.97 | 0.96 |
-| Ensemble | **0.98** | **0.97** |
+The ensemble achieves high accuracy on the evaluation dataset.
 
----
-
-## 🧾 Citation
-If you use this project or any part of its code, please cite:
-```
-@software{fake_news_detection,
-  author = {Your Name},
-  title = {Fake News Detection using Transformer Models},
-  year = {2025},
-  url = {https://github.com/yourusername/fake-news-detection}
-}
-```
-
----
-
-## 💡 Future Work
-- Add multilingual fake news detection.
-- Integrate explainable AI (SHAP/Grad-CAM).
-- Deploy the model as an interactive web app using Streamlit.
-
----
-
-## 👩‍💻 Author
-**Your Name**  
-AI/ML Engineer | NLP Researcher  
-[GitHub](https://github.com/yourusername)
+Generates a confusion matrix and classification report for performance analysis.
